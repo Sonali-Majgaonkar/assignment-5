@@ -1,0 +1,39 @@
+<div class="row my-5 pt-5">
+    <div class="col-xl-5 col-lg-6 col-md-8 col-xs-10 mt-4 mx-auto">
+        <div class="loginForm pt-3">
+            <div class="text-center py-4">
+                <i class="fa fa-lock fa-4x" aria-hidden="true"></i>
+            </div>
+            <form class="px-5 pb-5 mt-3" [formGroup]="loginForm" (ngSubmit)="onLoginSubmitBtn()">
+                <div class="form-group">
+                    <label class="text-capitalize h6 ml-3" for="userId">Username</label>
+                    <input type="text" name="UserId" id="userId" class="form-control border-radius border border-dark" formControlName="username">
+                    <span class="text-capitalize text-danger ml-3" *ngIf = "loginForm.get('username')?.invalid && loginForm.get('username').touched">
+                        username is required
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label class="text-capitalize h6 ml-3" for="password">Password</label>
+                    <input [type]="isShow ? 'password' : 'text'" name="password" id="password" class="form-control border-radius border border-dark" formControlName="password">
+                    <i 
+                        class="bi showPassword"
+                        [ngClass]="{
+                            'bi-eye-fill' : isShow,
+                            'bi-eye-slash-fill' : !isShow
+                        }"
+                        (click)="onShowPasswordToggle()">
+                    </i>
+                    <!-- <i class="bi bi-eye-slash-fill showPassword"></i> -->
+                    <span class="text-capitalize text-danger ml-3" *ngIf = "loginForm.get('password')?.invalid && loginForm.get('password').touched">
+                        password is required
+                    </span>
+                </div>
+                <div class="form-group text-center mt-5">
+                    <button type="submit" class="btn btn-light btn-block myBtn font-weight-bold text-white border-radius">Login</button>
+                    <span class="d-block mt-4">Not Register Yet ? <a routerLink="/registration" class="font-weight-bold text-primary ">Register</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

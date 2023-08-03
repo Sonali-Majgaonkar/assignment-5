@@ -1,0 +1,21 @@
+
+<div class="row mt-4 details" >
+    <div class="col-12 ">
+        <p class="font-weight-bold">Name :<span class="ml-3 display-4 border-bottom border-secondary"> {{staffDetails?.fullName.fName}} {{staffDetails?.fullName.lName}}</span></p>
+    </div>
+    <div class="col-12 mt-4">
+        <p><span class="font-weight-bold">Email ID : </span> {{staffDetails?.email}}</p>
+    </div>
+    <div class="col-12">
+        <p><span class="font-weight-bold">Contact Number : </span> {{staffDetails?.contact}}</p>
+    </div>
+    <div class="col-12">
+        <p><span class="font-weight-bold">Department Name : </span> {{staffDetails?.dept | uppercase}}</p>
+    </div>
+    <div class="col-12">
+        <p><span class="font-weight-bold">Available Leaves : </span> {{staffDetails?.totalLeave}} leaves</p>
+    </div>
+    <div class="col-12">
+        <p><span class="font-weight-bold">Approved Leaves : </span> {{20 - staffDetails?.totalLeave}} leaves</p>
+    </div>
+</div>

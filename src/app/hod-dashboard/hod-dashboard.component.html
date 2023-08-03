@@ -1,0 +1,144 @@
+<div class="row noRequest" *ngIf="leaveList.length==0">
+    <h4 class="text-danger">No leave request available</h4>
+</div>
+<div *ngIf="leaveList.length!==0">
+    <h4 class="display-4">Applied Leaves</h4>
+</div>
+<div class="row py-5" *ngIf="leaveList.length!==0">
+    <div class="col-xl-4 col-md-6 mb-5 " *ngFor="let leave of leaveList">
+        <div class="card">
+            <div class="card-body text-left">
+                <div class="card-title font-weight-bold">
+                    {{leave.fullName}}
+                </div>
+                <span>Leave {{leave.leaveDays == 1 ? 'for '+ leave.fromDate : 'from ' + leave.fromDate + ' to ' +
+                    leave.toDate}}</span>
+                <span class="d-block mb-3">Number of days {{leave.leaveDays}}</span>
+                <h6>Reason : </h6>
+                <span>{{leave.reason}}</span>
+            </div>
+            <div class="card-footer d-flex justify-content-around mt-2 py-3">
+                <ng-container *ngIf="leave.status == 'pending'">
+                    <button type="button" class="btn btn-success font-weight-bold px-3"
+                        (click)="onApproveClick(leave.leaveID , leave.key)">Approve</button>
+                    <button type="button" class="btn btn-danger font-weight-bold px-4"
+                        (click)="onRejectClick(leave.leaveID , leave.key)">Reject</button>
+                </ng-container>
+                <ng-container *ngIf="leave.status == 'approved' ">
+                    <h5 class="text-success font-weight-bold"><i class="bi bi-check2 mr-3"></i>Approved</h5>
+                </ng-container>
+                <ng-container *ngIf="leave.status == 'rejected' ">
+                    <h5 class="text-danger font-weight-bold"><i class="bi bi-x mr-3"></i>Rejected</h5>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="col-xl-4 col-md-6 mb-5">
+        <div class="card">
+            <div class="card-body text-left">
+                <div class="card-title font-weight-bold">
+                    Sonali Waikar
+                </div>
+                <span>Leave from 12 Aug , 2023</span>
+                <span class="d-block mb-3">Number of days 1</span>
+                <h6>Reason : </h6>
+                <span>Some family function</span>
+            </div>
+            <div class="card-footer d-flex justify-content-around mt-2 py-3">
+                <ng-container *ngIf="!leaveApprove ; else levaeStatus">
+                    <button type="button" class="btn btn-success font-weight-bold px-3">Approve</button>
+                    <button type="button" class="btn btn-danger font-weight-bold px-4">Reject</button>
+                </ng-container>
+                <ng-template #levaeStatus>
+                    <ng-container *ngIf="approved ; else rejected">
+                        <h5 class="text-success font-weight-bold"><i class="bi bi-check2 mr-3"></i>Approved</h5>
+                    </ng-container>
+                    <ng-template #rejected>
+                        <h5 class="text-danger font-weight-bold"><i class="bi bi-check2 mr-3"></i>Rejected</h5>
+                    </ng-template>
+                </ng-template>
+                </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-md-6 mb-5">
+        <div class="card">
+            <div class="card-body text-left">
+                <div class="card-title font-weight-bold">
+                    Sonali Waikar
+                </div>
+                <span>Leave from 12 Aug , 2023</span>
+                <span class="d-block mb-3">Number of days 1</span>
+                <h6>Reason : </h6>
+                <span>Some family function</span>
+            </div>
+            <div class="card-footer d-flex justify-content-around mt-2 py-3">
+                <ng-container *ngIf="!leaveApprove ; else levaeStatus">
+                    <button type="button" class="btn btn-success font-weight-bold px-3">Approve</button>
+                    <button type="button" class="btn btn-danger font-weight-bold px-4">Reject</button>
+                </ng-container>
+                <ng-template #levaeStatus>
+                    <ng-container *ngIf="approved ; else rejected">
+                        <h5 class="text-success font-weight-bold"><i class="bi bi-check2 mr-3"></i>Approved</h5>
+                    </ng-container>
+                    <ng-template #rejected>
+                        <h5 class="text-danger font-weight-bold"><i class="bi bi-check2 mr-3"></i>Rejected</h5>
+                    </ng-template>
+                </ng-template>
+                </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-md-6 mb-5">
+        <div class="card">
+            <div class="card-body text-left">
+                <div class="card-title font-weight-bold">
+                    Sonali Waikar
+                </div>
+                <span>Leave from 12 Aug , 2023</span>
+                <span class="d-block mb-3">Number of days 1</span>
+                <h6>Reason : </h6>
+                <span>Some family function</span>
+            </div>
+            <div class="card-footer d-flex justify-content-around mt-2 py-3">
+                <ng-container *ngIf="!leaveApprove ; else levaeStatus">
+                    <button type="button" class="btn btn-success font-weight-bold px-3">Approve</button>
+                    <button type="button" class="btn btn-danger font-weight-bold px-4">Reject</button>
+                </ng-container>
+                <ng-template #levaeStatus>
+                    <ng-container *ngIf="approved ; else rejected">
+                        <h5 class="text-success font-weight-bold"><i class="bi bi-check2 mr-3"></i>Approved</h5>
+                    </ng-container>
+                    <ng-template #rejected>
+                        <h5 class="text-danger font-weight-bold"><i class="bi bi-check2 mr-3"></i>Rejected</h5>
+                    </ng-template>
+                </ng-template>
+                </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-md-6 mb-5">
+        <div class="card">
+            <div class="card-body text-left">
+                <div class="card-title font-weight-bold">
+                    Sonali Waikar
+                </div>
+                <span>Leave from 12 Aug , 2023</span>
+                <span class="d-block mb-3">Number of days 1</span>
+                <h6>Reason : </h6>
+                <span>Some family function</span>
+            </div>
+            <div class="card-footer d-flex justify-content-around mt-2 py-3">
+                <ng-container *ngIf="!leaveApprove ; else levaeStatus">
+                    <button type="button" class="btn btn-success font-weight-bold px-3">Approve</button>
+                    <button type="button" class="btn btn-danger font-weight-bold px-4">Reject</button>
+                </ng-container>
+                <ng-template #levaeStatus>
+                    <ng-container *ngIf="approved ; else rejected">
+                        <h5 class="text-success font-weight-bold"><i class="bi bi-check2 mr-3"></i>Approved</h5>
+                    </ng-container>
+                    <ng-template #rejected>
+                        <h5 class="text-danger font-weight-bold"><i class="bi bi-check2 mr-3"></i>Rejected</h5>
+                    </ng-template>
+                </ng-template>
+                </div>
+        </div>
+    </div> -->

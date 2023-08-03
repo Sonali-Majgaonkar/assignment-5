@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light alert alert-primary  p-3" *ngIf="isHeaderShow">
+  <a class="navbar-brand font-weight-bold">Leave Management</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse " id="navbarNav">
+    <ul class="navbar-nav ml-auto mr-5" *ngIf="showHodMenu ; else showStaffMenu">
+      <li class="nav-item mr-5 px-2 py-1">
+        <a class="nav-link h6 text-dark" routerLink="hoddb" routerLinkActive="isActive">Leaves </a>
+      </li>
+      <li class="nav-item mr-5 px-2 py-1">
+        <a class="nav-link h6 text-dark" routerLink="staff" routerLinkActive="isActive"> Staff List</a>
+      </li>
+      <li class="nav-item mr-3 pt-1">
+        <button class="btn btn-outline-danger" (click)="onLogoutBtn()">Logout</button>
+      </li>
+      <li class=" ml-3 currentUser">
+        <i class="bi bi-person-fill"></i>
+        <h6>{{currentUserName}}</h6>
+      </li>
+    </ul>
+    <ng-template #showStaffMenu>
+      <ul class="navbar-nav ml-auto mr-5">
+        <!-- <li class="nav-item mr-5 pt-1">
+          <button class="btn btn-outline-primary" routerLink="leave">Apply Leave</button>
+        </li> -->
+        <li class="nav-item mr-3 pt-1">
+          <button class="btn btn-outline-danger" (click)="onLogoutBtn()">Logout</button>
+        </li>
+        <li class=" ml-3 currentUser">
+          <i class="bi bi-person-fill"></i>
+          <h6>{{currentUserName}}</h6>
+        </li>
+      </ul>
+    </ng-template>
+    <!-- <ul class="navbar-nav ml-auto mr-5" *ngIf="!showHodMenu">
+      <li class="nav-item mr-5 pt-1">
+        <button class="btn btn-outline-primary" routerLink="leave">Apply Leave</button>
+      </li>
+      <li class="nav-item mr-3 pt-1">
+        <button class="btn btn-outline-danger" (click)="onLogoutBtn()">Logout</button>
+      </li>
+    </ul>  -->
+  </div>
+</nav>

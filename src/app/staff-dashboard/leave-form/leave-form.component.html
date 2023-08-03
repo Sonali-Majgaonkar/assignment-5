@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row leaveForm">
+        <div class="col-xl-4 col-md-6  p-4 border border-dark myFrom">
+            <div class="heading py-3">
+                <h5>Leave Details<i class="bi bi-x closeIcon" (click)="onCloseClick()"></i></h5>
+            </div>
+            <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="fromDate">From*</label>
+                            <input type="date" id="fromDate" class="form-control border border-secondary" formControlName="fromDate">
+                            <span class="text-danger" *ngIf="leaveForm.get('fromDate').invalid && (leaveForm.get('fromDate').touched || leaveForm.get('fromDate').dirty )">
+                                Select valid Date.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="toDate">To*</label>
+                            <input type="date" id="toDate" class="form-control border border-secondary" formControlName="toDate">
+                            <span class="text-danger" *ngIf="leaveForm.get('toDate').invalid && (leaveForm.get('toDate').touched || leaveForm.get('toDate').dirty )">
+                                Select valid Date.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <span class="text-danger">
+                            {{validationMsg}}
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="reason">Reason*</label>
+                            <textarea name="reason" id="reason" cols="30" rows="3" class="form-control border border-secondary" formControlName="reason"></textarea>
+                            <span class="text-danger" *ngIf="leaveForm.get('reason').invalid && (leaveForm.get('reason').touched || leaveForm.get('reason').dirty )">
+                                This field is required
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-end mt-3">
+                    <button class="btn btn-light mr-4" (click)="onCloseClick()">Cancel</button>
+                    <button class="btn btn-success mr-4">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

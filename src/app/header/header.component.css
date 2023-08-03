@@ -1,0 +1,22 @@
+.isActive{
+    background-color: #7dd3ea;
+    border-radius: 5px;
+    padding: 10px 20px !important;
+    border-bottom : 2px solid #17a2b8;
+}
+#navbarNav li{
+    text-align: center;
+}
+#navbarNav a{
+    width: 105px;
+    /* height: 45px; */
+}
+#navbarNav a:hover{
+    background-color: #7dd3ea;
+    border-radius: 5px;
+    padding: 10px 20px !important;
+    border-bottom : 2px solid #17a2b8;
+}
+.currentUser{
+    margin: -10px;
+}

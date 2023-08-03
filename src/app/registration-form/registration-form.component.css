@@ -1,0 +1,39 @@
+.form-control.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+/* input[type="radio"] {
+ } */
+
+input[type=radio] {
+    accent-color: green;
+}
+
+.mainHeading {
+    font-size: 40px;
+    text-align: center;
+    color: black;
+}
+
+.border-radius {
+    border-radius: 25px;
+    padding: 20px 15px ;
+}
+
+.form-group>input,
+.form-group>select {
+    border: 1px solid black;
+}
+
+.regiForm {
+    background-image: linear-gradient(to right bottom, rgb(1, 96, 128), rgb(173, 216, 230));
+    /* background-image: linear-gradient(to left bottom , #f50ee6 , #7575ff  , skyblue  ); */
+    border-radius: 10px;
+    box-shadow: 1px 1px 17px #023a4d;
+}
+
+.myBtn {
+    /* background-image: linear-gradient(to right bottom , #f50ee6 , #f50ee6); */
+    background-image: linear-gradient(to right bottom, rgb(2, 68, 90), rgb(2, 68, 90));
+    padding: 10px 0 10px 0;
+}

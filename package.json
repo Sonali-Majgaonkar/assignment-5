@@ -20,7 +20,10 @@
     "@angular/router": "^15.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.12.0"
+    "zone.js": "~0.12.0",
+    "bootstrap": "4.6",
+    "font-awesome": "^4.7.0",
+    "jquery": "3.5"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.2.2",
