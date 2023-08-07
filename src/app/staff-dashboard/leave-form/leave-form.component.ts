@@ -36,30 +36,26 @@ export class LeaveFormComponent implements OnInit {
   onCloseClick() {
     this.router.navigate(['staffdb']);
   }
-
+  getTotalLeavesDays(fromDate: string, toDate: string) {
+    return new Date(new Date(toDate).getTime() - new Date(fromDate).getTime()).getDate()
+  }
   onSubmit() {
-    /* console.log(this.date);
-     console.log(this.leaveForm.get('fromDate').value);
-     console.log(this.leaveForm.get('toDate').value);
-    
-     console.log((this.leaveForm.get('fromDate').value).split('-').join(''));
-     console.log((this.leaveForm.get('toDate').value).split('-').join(''));
-
-      let leaveFrom = (this.leaveForm.get('fromDate').value).split('-').join('');
-      let leaveTo = (this.leaveForm.get('toDate').value).split('-').join('');*/
+    /*console.log((this.leaveForm.get('fromDate').value).split('-').join(''));
+     console.log((this.leaveForm.get('toDate').value).split('-').join(''));*/
 
     let leaveFrom = this.leaveForm.get('fromDate').value;
     let leaveTo = this.leaveForm.get('toDate').value;
+
     if ((leaveFrom <= leaveTo) && leaveFrom > this.date) {
 
-      let leaveObj = { key: this.localStorageData.key, fullName: this.localStorageData.fullName, ...this.leaveForm.value, leaveDays: (leaveTo.split('-').join('') - leaveFrom.split('-').join('') + 1), status: "pending" , dept : this.localStorageData.dept };
+      let leaveObj = { key: this.localStorageData.key, fullName: this.localStorageData.fullName, ...this.leaveForm.value, leaveDays: this.getTotalLeavesDays(leaveFrom, leaveTo), status: "pending", dept: this.localStorageData.dept };
 
-      this.mgtServe.getByIdCall(this.localStorageData.key).subscribe((res:any)=>{
-        if(res.totalLeave > leaveObj.leaveDays){
+      this.mgtServe.getByIdCall(this.localStorageData.key).subscribe((res: any) => {
+        if (res.totalLeave > leaveObj.leaveDays) {
           this.mgtServe.postLeaveCall(leaveObj).subscribe((res: any) => {
             this.router.navigate(['staffdb']);
           })
-        }else{
+        } else {
           alert(`You Have Only ${res.totalLeave} Leaves..!`)
         }
       })

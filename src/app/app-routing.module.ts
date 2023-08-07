@@ -11,7 +11,7 @@ import { StaffListComponent } from './hod-dashboard/staff-list/staff-list.compon
 import { StaffDetailsComponent } from './hod-dashboard/staff-list/staff-details/staff-details.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 const routes: Routes = [
-  // {path : '' , redirectTo : 'login' , pathMatch : 'full'},
+  {path : '' , redirectTo : 'login' , pathMatch : 'full'},
   {path : 'login' , component : LoginFormComponent},
   {path : 'registration' , component : RegistrationFormComponent},
   {path : 'staffdb' , component  : StaffDashboardComponent , canActivate : [StaffAuthGuard] },
