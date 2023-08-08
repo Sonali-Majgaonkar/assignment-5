@@ -1,99 +1,101 @@
-<div class="row justify-content-center my-5 pt-4">
-    <div class="col-md-6 regiForm border border-secondary pt-2">
-        <h5 class="my-4 mainHeading">Register</h5>
-        <!-- <hr> -->
-        <form class="px-5 pt-2 pb-4" [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
-            <div class="row justify-content-between">
-                <div class="col-md-6 mb-4">
-                    <div class="form-check form-check-inline ml-3">
-                        <input formControlName="clgRole" class="form-check-input" type="radio" name="clgRole" id="hod"
-                            value="hod">
-                        <label class="form-check-label h6 text-uppercase" for="hod">hod</label>
+<div class="container">
+    <div class="row justify-content-center my-5 pt-4">
+        <div class="col-md-6 regiForm border border-secondary pt-2">
+            <h5 class="my-4 mainHeading">Register</h5>
+            <!-- <hr> -->
+            <form class="px-5 pt-2 pb-4" [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
+                <div class="row justify-content-between">
+                    <div class="col-md-6 mb-4">
+                        <div class="form-check form-check-inline ml-3">
+                            <input formControlName="clgRole" class="form-check-input" type="radio" name="clgRole" id="hod"
+                                value="hod">
+                            <label class="form-check-label h6 text-uppercase" for="hod">hod</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input formControlName="clgRole" class="form-check-input" type="radio" name="clgRole" id="staff"
+                                value="staff">
+                            <label class="form-check-label h6 text-uppercase" for="staff">Staff</label>
+                        </div>
+                        <span class="d-block text-danger" *ngIf="registerForm.get('clgRole').invalid">Please Select Role</span>
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input formControlName="clgRole" class="form-check-input" type="radio" name="clgRole" id="staff"
-                            value="staff">
-                        <label class="form-check-label h6 text-uppercase" for="staff">Staff</label>
+                    <div class="col-md-6"> </div>
+    
+                    <div class="col-md-12 d-flex p-0" formGroupName="fullName">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="h6 ml-3" for="fName">First Name*</label>
+                                <input formControlName="fName" type="text" name="fName" id="fName" class="form-control border-radius border border-dark">
+                                <span class="text-danger" *ngIf="registerForm.get('fullName.fName').invalid && registerForm.get('fullName.fName').touched">Enter Valid First Name</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="h6 ml-3" for="lName">Last Name*</label>
+                                <input formControlName="lName" type="text" name="lName" id="lName" class="form-control border-radius border border-dark">
+                                <span class="text-danger" *ngIf="registerForm.get('fullName.lName').invalid && registerForm.get('fullName.lName').touched">Enter Valid First Name</span>
+                            </div>
+                        </div>
                     </div>
-                    <span class="d-block text-danger" *ngIf="registerForm.get('clgRole').invalid">Please Select Role</span>
-                </div>
-                <div class="col-md-6"> </div>
-
-                <div class="col-md-12 d-flex p-0" formGroupName="fullName">
+    
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="h6 ml-3" for="fName">First Name*</label>
-                            <input formControlName="fName" type="text" name="fName" id="fName" class="form-control border-radius border border-dark">
-                            <span class="text-danger" *ngIf="registerForm.get('fullName.fName').invalid && registerForm.get('fullName.fName').touched">Enter Valid First Name</span>
+                            <label class="h6 ml-3" for="email">Email*</label>
+                            <input formControlName="email" type="text" name="email" id="email" class="form-control border-radius border border-dark">
+                            <span class="text-danger" *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched">Enter Valid Email Id</span>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="h6 ml-3" for="contact">Contact*</label>
+                            <input formControlName="contact" type="text" name="contact" id="contact" class="form-control border-radius border border-dark">
+                            <span class="text-danger" *ngIf="registerForm.get('contact').invalid && registerForm.get('contact').touched">Enter Valid Contact Number</span>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="h6 ml-3 mb-3" for="dept">Department*</label>
+                            <select name="dept" id="dept" class="form-control border-radius py-0 border border-dark" formControlName="dept">
+                                <option value="" selected hidden>Select Department</option>
+                                <option value="cse">CSE</option>
+                                <option value="civil">Civil</option>
+                                <option value="electronic">Electronic</option>
+                                <option value="mechanical">Mechanical</option>
+                                <option value="biology">Biology</option>
+                            </select>
+                            <span class="text-danger" *ngIf="registerForm.get('dept').invalid && registerForm.get('dept').touched">Please Select Option</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="h6 ml-3" for="username">Username*</label>
+                            <input formControlName="username" type="text" name="username" id="username" class="form-control border-radius border border-dark" (blur)="onUserNameBlur($event)">
+                            <span class="text-danger" *ngIf="registerForm.get('username').invalid && registerForm.get('username').touched">Enter Valid Username</span>
+                            <span class="text-danger" *ngIf="!uniqueUsername && registerForm.get('username').valid">{{validMsg}}</span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="h6 ml-3" for="lName">Last Name*</label>
-                            <input formControlName="lName" type="text" name="lName" id="lName" class="form-control border-radius border border-dark">
-                            <span class="text-danger" *ngIf="registerForm.get('fullName.lName').invalid && registerForm.get('fullName.lName').touched">Enter Valid First Name</span>
+                            <label class="h6 ml-3" for="password">Password*</label>
+                            <input formControlName="password" type="text" name="password" id="password" class="form-control border-radius border border-dark">
+                            <span class="text-danger" *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched">Enter Password</span>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="h6 ml-3" for="email">Email*</label>
-                        <input formControlName="email" type="text" name="email" id="email" class="form-control border-radius border border-dark">
-                        <span class="text-danger" *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched">Enter Valid Email Id</span>
+                <div class="row mt-4"> 
+                    <div class="col">
+                        <div class="form-group text-center">
+                            <!-- <button class="btn btn-white btn-block myBtn">Register</button> -->
+                            <button class="btn btn-light btn-block myBtn font-weight-bold text-white border-radius">Register</button>
+                            <span class="d-block mt-4 ">Already Registered ? <a routerLink="/login" class="font-weight-bold text-primary">Login</a></span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="h6 ml-3" for="contact">Contact*</label>
-                        <input formControlName="contact" type="text" name="contact" id="contact" class="form-control border-radius border border-dark">
-                        <span class="text-danger" *ngIf="registerForm.get('contact').invalid && registerForm.get('contact').touched">Enter Valid Contact Number</span>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="h6 ml-3 mb-3" for="dept">Department*</label>
-                        <select name="dept" id="dept" class="form-control border-radius py-0 border border-dark" formControlName="dept">
-                            <option value="" selected hidden>Select Department</option>
-                            <option value="cse">CSE</option>
-                            <option value="civil">Civil</option>
-                            <option value="electronic">Electronic</option>
-                            <option value="mechanical">Mechanical</option>
-                            <option value="biology">Biology</option>
-                        </select>
-                        <span class="text-danger" *ngIf="registerForm.get('dept').invalid && registerForm.get('dept').touched">Please Select Option</span>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="h6 ml-3" for="username">Username*</label>
-                        <input formControlName="username" type="text" name="username" id="username" class="form-control border-radius border border-dark" (blur)="onUserNameBlur($event)">
-                        <span class="text-danger" *ngIf="registerForm.get('username').invalid && registerForm.get('username').touched">Enter Valid Username</span>
-                        <span class="text-danger" *ngIf="!uniqueUsername && registerForm.get('username').valid">{{validMsg}}</span>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="h6 ml-3" for="password">Password*</label>
-                        <input formControlName="password" type="text" name="password" id="password" class="form-control border-radius border border-dark">
-                        <span class="text-danger" *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched">Enter Password</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4"> 
-                <div class="col">
-                    <div class="form-group text-center">
-                        <!-- <button class="btn btn-white btn-block myBtn">Register</button> -->
-                        <button class="btn btn-light btn-block myBtn font-weight-bold text-white border-radius">Register</button>
-                        <span class="d-block mt-4 ">Already Registered ? <a routerLink="/login" class="font-weight-bold text-primary">Login</a></span>
-                    </div>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>

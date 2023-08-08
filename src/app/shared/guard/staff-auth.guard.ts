@@ -13,7 +13,7 @@ export class StaffAuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       this.localStorageData = localStorage.getItem('userData');
       if(JSON.parse(this.localStorageData)?.clgRole === 'staff'){
-        // console.log(this.localStorageData ,'Can access');
+        console.log('auth', JSON.parse(this.localStorageData).clgRole);
         return true;
       }else{
         alert("Can't Access Dashboard without login..")

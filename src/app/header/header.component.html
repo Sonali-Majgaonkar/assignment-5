@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light alert alert-primary  p-3" *ngIf="isHeaderShow">
+<nav class="navbar navbar-expand-lg navbar-light alert-primary  p-3">
   <a class="navbar-brand font-weight-bold">Leave Management</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse " id="navbarNav">
     <ul class="navbar-nav ml-auto mr-5" *ngIf="showHodMenu ; else showStaffMenu">
       <li class="nav-item mr-5 px-2 py-1">
-        <a class="nav-link h6 text-dark" routerLink="hoddb" routerLinkActive="isActive">Leaves </a>
+        <a class="nav-link h6 text-dark" routerLink="leaves" routerLinkActive="isActive">Leaves </a>
       </li>
       <li class="nav-item mr-5 px-2 py-1">
         <a class="nav-link h6 text-dark" routerLink="staff" routerLinkActive="isActive"> Staff List</a>

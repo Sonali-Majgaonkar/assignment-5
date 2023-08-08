@@ -24,7 +24,7 @@ export class StaffDashboardComponent implements OnInit {
     if (localStorage.getItem('userData')) {
       this.localData = localStorage.getItem('userData');
       this.localData = JSON.parse(this.localData);
-      console.log(this.localData.key);
+      //console.log(this.localData.key);
     }
     this.getLeaveData();
     
@@ -57,6 +57,11 @@ export class StaffDashboardComponent implements OnInit {
       result.filter((approveRes : any)=> approveRes.status === 'approved').map((mapRes : any)=>this.totalApproved+= mapRes.leaveDays)
       this.rejectLeave = result.filter((rejectRes : any)=> rejectRes.status === 'rejected');
     })
+  }
+
+  refershData(){
+    console.log("refersh page")
+    this.ngOnInit();
   }
 
 }

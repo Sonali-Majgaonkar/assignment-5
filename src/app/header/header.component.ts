@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit , DoCheck{
   }
   ngOnInit(): void {
     // this.currentUserKey === 'hod' ? this.showHodMenu = true : this.showHodMenu = false;
+    // console.log("header comp loads")
   }
 
   ngDoCheck(): void {

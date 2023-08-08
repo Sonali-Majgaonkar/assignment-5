@@ -44,7 +44,7 @@ export class LoginFormComponent implements OnInit {
         // console.log(userRes);
         if (result) {
           localStorage.setItem('userData', JSON.stringify({ key: result.id, fullName: result.fullName, clgRole: result.clgRole, dept: result.dept }));
-          result.clgRole === 'hod' ? this.router.navigate(['hoddb']) : this.router.navigate(['staffdb']);
+          result.clgRole === 'hod' ? this.router.navigate(['hoddb/leaves']) : this.router.navigate(['staffdb']);
           alert('Login Successfull')
         }
         else {

@@ -1,35 +1,53 @@
+/* body {
+        -ms-overflow-style: none; 
+        scrollbar-width: none;
+        overflow-y: scroll; 
+      }
+      
+      body::-webkit-scrollbar {
+        display:none; 
+      } */
 
-.myFrom{
+
+.myFrom {
     animation: fadeOut .5s ease-in-out;
+    background-color: gainsboro;
 }
 
-.leaveForm{
-    height: 75vh;
+.leaveForm {
+    height: 100vh;
+    max-width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 0px;
+    background-color: rgba(100, 100, 100, 0.5);
 }
-.closeIcon{
+
+.closeIcon {
     float: right;
     font-size: 25px;
     margin-top: -8px;
     transition: all .1s ease-out;
 }
 
-.closeIcon:hover{
-   color: red;
-   transform: scale(1.3);
+.closeIcon:hover {
+    color: red;
+    transform: scale(1.3);
 }
 
 @keyframes fadeOut {
-    0%{
+    0% {
         opacity: 0;
         transform: scale(0);
     }
-    80%{
+
+    80% {
         transform: scale(1.3);
     }
-    100%{
+
+    100% {
         opacity: 1;
         transform: scale(1);
     }

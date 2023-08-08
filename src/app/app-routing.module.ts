@@ -10,21 +10,45 @@ import { StaffAuthGuard } from './shared/guard/staff-auth.guard';
 import { StaffListComponent } from './hod-dashboard/staff-list/staff-list.component';
 import { StaffDetailsComponent } from './hod-dashboard/staff-list/staff-details/staff-details.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
+import { ShowLeavesComponent } from './hod-dashboard/show-leaves/show-leaves.component';
+// const routes: Routes = [
+//   {path : '' , redirectTo : 'login' , pathMatch : 'full'},
+//   {path : 'login' , component : LoginFormComponent},
+//   {path : 'registration' , component : RegistrationFormComponent},
+//   {path : 'staffdb' , component  : StaffDashboardComponent , canActivate : [StaffAuthGuard] },
+//   // {path : 'staffdb' , component  : StaffDashboardComponent },
+//   {path : 'leave' , component  : LeaveFormComponent , canActivate : [StaffAuthGuard] },
+//   // {path : 'leave' , component  : LeaveFormComponent },
+//   {path : 'hoddb' , component : HodDashboardComponent , canActivate : [AuthGuard] },
+//   // {path : 'hoddb' , component : HodDashboardComponent },
+//   {path : 'staff' , component : StaffListComponent , canActivate : [AuthGuard] },
+//   // {path : 'staff' , component : StaffListComponent },
+//   {path : 'staff/details' , component : StaffDetailsComponent , canActivate : [AuthGuard] },
+//   // {path : 'staff/details' , component : StaffDetailsComponent },
+//   { path :'**' , component : NoPageFoundComponent }
+// ];
+
 const routes: Routes = [
-  {path : '' , redirectTo : 'login' , pathMatch : 'full'},
-  {path : 'login' , component : LoginFormComponent},
-  {path : 'registration' , component : RegistrationFormComponent},
-  {path : 'staffdb' , component  : StaffDashboardComponent , canActivate : [StaffAuthGuard] },
-  // {path : 'staffdb' , component  : StaffDashboardComponent },
-  {path : 'leave' , component  : LeaveFormComponent , canActivate : [StaffAuthGuard] },
-  // {path : 'leave' , component  : LeaveFormComponent },
-  {path : 'hoddb' , component : HodDashboardComponent , canActivate : [AuthGuard] },
-  // {path : 'hoddb' , component : HodDashboardComponent },
-  {path : 'staff' , component : StaffListComponent , canActivate : [AuthGuard] },
-  // {path : 'staff' , component : StaffListComponent },
-  {path : 'staff/details' , component : StaffDetailsComponent , canActivate : [AuthGuard] },
-  // {path : 'staff/details' , component : StaffDetailsComponent },
-  { path :'**' , component : NoPageFoundComponent }
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginFormComponent },
+  { path: 'registration', component: RegistrationFormComponent },
+  { path: 'staffdb', component: StaffDashboardComponent, canActivate: [StaffAuthGuard] , children : [
+    { path: 'leave', component: LeaveFormComponent },
+  ] },
+  // { path: 'leave', component: LeaveFormComponent, canActivate: [StaffAuthGuard] },
+  { path: 'hoddb', component: HodDashboardComponent, canActivate: [AuthGuard], children: [
+      { path: 'leaves', component: ShowLeavesComponent },
+      {
+        path: 'staff', component: StaffListComponent, children: [
+          { path: 'details', component: StaffDetailsComponent }
+        ]
+      }
+    ]
+  },
+  { path: '**', component: NoPageFoundComponent }
+  // {path : 'hoddb/staff' , component : StaffListComponent , canActivate : [AuthGuard] },
+  // {path : 'staff/details' , component : StaffDetailsComponent , canActivate : [AuthGuard] },
+
 ];
 
 @NgModule({

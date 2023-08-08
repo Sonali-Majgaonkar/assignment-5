@@ -14,6 +14,7 @@ import { LeaveFormComponent } from './staff-dashboard/leave-form/leave-form.comp
 import { StaffListComponent } from './hod-dashboard/staff-list/staff-list.component';
 import { StaffDetailsComponent } from './hod-dashboard/staff-list/staff-details/staff-details.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
+import { ShowLeavesComponent } from './hod-dashboard/show-leaves/show-leaves.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
     StaffListComponent,
     StaffDetailsComponent,
     NoPageFoundComponent,
+    ShowLeavesComponent,
   ],
   imports: [
     BrowserModule,
